@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 
-<html ng-app="pvd">
+<html ng-app="testApp">
 
 <head>
-    <script src="angular.js"></script>
-    <script src="app.js"></script>
+    <style type="text/css">
+    .animate-show {
+        line-height: 20px;
+        opacity: 1;
+        padding: 10px;
+        border: 1px solid black;
+        background: white;
+    }
+    .animate-show.ng-hide-add.ng-hide-add-active,
+    .animate-show.ng-hide-remove.ng-hide-remove-active {
+        -webkit-transition: all linear 0.5s;
+        transition: all linear 0.5s;
+    }
+    .animate-show.ng-hide {
+        line-height: 0;
+        opacity: 0;
+        padding: 0 10px;
+    }
+    </style>
 </head>
 
-<body>
-    <div np-view>
+<body ng-controller="testCtrl">
+    <div class="testForm" class="animate-show" ng-show="showForm">
+        <input type="text" name="name" ng-model="name">
+        <a href="javascript:void(0)" ng-click="submitName()">提交</a>
+        <script src="angular.js"></script>
     </div>
+    <div class="testList" class="animate-show" ng-hide="showForm">
+        <ul>
+            <li ng-repeat="phone in phones">
+                <span>{{phone.name}}</span>
+                <p>{{phone.snippet}}</p>
+            </li>
+        </ul>
+    </div>
+    <script src="controllers.js"></script>
 </body>
 
 </html>

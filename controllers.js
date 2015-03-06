@@ -1,6 +1,16 @@
-var phonecatApp = angular.module('phonecatApp', []);
+var testApp = angular.module('testApp', []);
 
-phonecatApp.controller('PhoneListCtrl', function($scope) {
+testApp.controller('testCtrl', function($scope) {
+    $scope.showForm = true;
+    $scope.name = 'xxx';
+    $scope.submitName = function() {
+        if (this.name === 'xxx') {
+            alert('no!!!');
+            return;
+        }
+        console.log(this.name);
+        this.showForm = false;
+    };
     $scope.phones = [{
         'name': 'Nexus S',
         'snippet': 'Fast just got faster with Nexus S.'
